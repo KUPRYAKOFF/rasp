@@ -1,4 +1,4 @@
-const SHELL_CACHE='iek-rasp-shell-v4';
+const SHELL_CACHE='iek-rasp-shell-v5';
 const DATA_CACHE='iek-rasp-data-v1';
 const SHELL=[
   './','./index.html','./app.js','./styles.css','./schedule-core.mjs',

@@ -244,9 +244,15 @@ function renderSchedule(lessons,context){
     const date=formatDate(state.language,dayDate(dayNumber),{timeZone:'UTC',day:'numeric',month:'short'});
     const extraPairs=[...new Set(day.extra.map(e=>e.pair))].sort((a,b)=>a-b);
     const extras=extraPairs.map(pair=>({pair,entries:day.extra.filter(item=>item.pair===pair).map(item=>({...item,active:activeForWeek(item,parity)}))}));
+    const rows=[...day.rows,...extras].map(row=>{
+      const pair=renderPair(row,dayNumber);
+      return dayNumber===2&&row.pair===2
+        ? `${pair}<p class="class-hour">${msg('Классный час')}</p>`
+        : pair;
+    });
     return `<section class="day-card ${dayNumber===today?'is-today':''}">
       <div class="day-heading"><div><h2>${msg(DAYS[dayNumber-1])}</h2><span class="day-date">${esc(date)}</span></div>${dayNumber===today?`<span class="today-label">${msg('Сегодня')}</span>`:''}</div>
-      <div class="day-slots">${[...day.rows,...extras].map(row=>renderPair(row,dayNumber)).join('')}</div>
+      <div class="day-slots">${rows.join('')}</div>
     </section>`;
   };
   const slideClass=state.slideDirection>0?'slide-forward':'slide-back';

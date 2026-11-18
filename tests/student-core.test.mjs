@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {PAIR_TIMES,pairTime,slideGroups,initialSlide,weekMonday,dayDate,boardParity,visibleGroups} from '../schedule-core.mjs';
+import {pairTime,slideGroups,initialSlide,weekMonday,dayDate,boardParity,visibleGroups} from '../schedule-core.mjs';
 
 test('three-day and two-day slider groups cover Monday–Saturday once', () => {
   assert.deepEqual(slideGroups('three'),[[1,2,3],[4,5,6]]);
@@ -36,10 +36,17 @@ test('group selection is ordered by course then name', () => {
   assert.equal(groups[0].label,'1ИС-26');
 });
 
-test('bell times are provided locally, including Saturday variation', () => {
-  assert.deepEqual(pairTime(1,1),['08:30','10:00']);
-  assert.deepEqual(pairTime(5,4),['14:10','15:40']);
-  assert.deepEqual(pairTime(6,2),['10:20','11:40']);
-  assert.equal(pairTime(2,5),null);
-  assert.equal(PAIR_TIMES.regular.length,4);
+test('all five bell times match the regular, Tuesday and Saturday schedules', () => {
+  const timesForDay = day => [1,2,3,4,5].map(pair => pairTime(day,pair));
+  const regular = [
+    ['08:30','10:00'],['10:20','11:50'],['12:30','14:00'],['14:10','15:40'],['15:50','17:20']
+  ];
+  for(const day of [1,3,4,5])assert.deepEqual(timesForDay(day),regular);
+  assert.deepEqual(timesForDay(2),[
+    ['08:30','10:00'],['10:20','11:50'],['13:20','14:50'],['15:00','16:30'],['16:40','18:10']
+  ]);
+  assert.deepEqual(timesForDay(6),[
+    ['08:30','10:00'],['10:10','11:40'],['12:10','13:40'],['13:50','15:20'],['15:30','17:00']
+  ]);
+  assert.equal(pairTime(2,6),null);
 });

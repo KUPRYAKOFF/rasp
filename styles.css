@@ -367,6 +367,16 @@ svg { display: block; width: 20px; height: 20px; flex: none; }
   min-height: 94px;
 }
 .pair-row + .pair-row { border-top: 1px solid var(--line); }
+.class-hour {
+  padding: 5px 8px;
+  border-block: 1px solid var(--line);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: .75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
 .pair-aside {
   display: flex;
   flex-direction: column;

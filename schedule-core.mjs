@@ -13,12 +13,14 @@ export const THEMES = Object.freeze([
 // The source API has no bell times. These local values are intentionally
 // editable independently of the snapshot and may differ at the college.
 export const PAIR_TIMES = Object.freeze({
-  regular:[['08:30','10:00'],['10:20','11:50'],['12:30','14:00'],['14:10','15:40']],
-  saturday:[['08:30','10:00'],['10:20','11:40'],['12:10','13:40'],['13:50','15:20']]
+  regular:[['08:30','10:00'],['10:20','11:50'],['12:30','14:00'],['14:10','15:40'],['15:50','17:20']],
+  tuesday:[['08:30','10:00'],['10:20','11:50'],['13:20','14:50'],['15:00','16:30'],['16:40','18:10']],
+  saturday:[['08:30','10:00'],['10:10','11:40'],['12:10','13:40'],['13:50','15:20'],['15:30','17:00']]
 });
 
 export function pairTime(day, pair) {
-  return (day === 6 ? PAIR_TIMES.saturday : PAIR_TIMES.regular)[pair-1] || null;
+  const times = day === 2 ? PAIR_TIMES.tuesday : day === 6 ? PAIR_TIMES.saturday : PAIR_TIMES.regular;
+  return times[pair-1] || null;
 }
 
 export function slideGroups(mode) {

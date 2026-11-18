@@ -69,6 +69,7 @@ const messages = Object.freeze({
   'Сб': ['Sat', 'Сб'],
 
   '{number} пара': ['Period {number}', '{number} пара'],
+  'Классный час': ['Homeroom', 'Классный часъ'],
   'Нет занятий': ['No classes', 'Нѣтъ занятій'],
   'Кабинет {room}': ['Room {room}', 'Кабинетъ {room}'],
   'Занятие': ['Class', 'Занятіе'],
