@@ -5,7 +5,9 @@ export const MODE_LABELS = Object.freeze({week:'Вся неделя',three:'3 д
 export const THEMES = Object.freeze([
   {id:'night',name:'Полярная ночь',description:'Тёмно-синяя с бирюзовыми акцентами'},
   {id:'light',name:'Светлая',description:'Светлый фон и тёмный текст'},
-  {id:'graphite',name:'Графит',description:'Строгая монохромная палитра'}
+  {id:'graphite',name:'Графит',description:'Строгая монохромная палитра'},
+  {id:'new-year',name:'Новогодняя',description:'Зимнее оформление со снегом и гирляндами'},
+  {id:'auspex',name:'Ауспекс',description:'Полевой терминал с монохромным ЭЛТ-экраном'}
 ]);
 
 // The source API has no bell times. These local values are intentionally

@@ -1,9 +1,9 @@
-const SHELL_CACHE='iek-rasp-shell-v2';
+const SHELL_CACHE='iek-rasp-shell-v4';
 const DATA_CACHE='iek-rasp-data-v1';
 const SHELL=[
   './','./index.html','./app.js','./styles.css','./schedule-core.mjs',
   './manifest.webmanifest','./assets/icon.svg','./assets/icon-192.png',
-  './assets/icon-512.png','./data-model.mjs'
+  './assets/icon-512.png','./data-model.mjs','./i18n.js'
 ];
 
 self.addEventListener('install',event=>{
